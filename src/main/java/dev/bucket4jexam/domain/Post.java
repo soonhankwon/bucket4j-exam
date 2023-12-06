@@ -1,10 +1,7 @@
 package dev.bucket4jexam.domain;
 
 import dev.bucket4jexam.controller.dto.PostAddRequest;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -17,7 +14,12 @@ public class Post {
 
     private String content;
 
-    public Post(PostAddRequest request) {
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public Post(PostAddRequest request, User user) {
         this.content = request.content();
+        this.user = user;
     }
 }
