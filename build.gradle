@@ -28,6 +28,8 @@ dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    implementation group: 'com.bucket4j', name: 'bucket4j-core', version: '8.7.0'
 }
 
 tasks.named('test') {
